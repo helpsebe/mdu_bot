@@ -47,7 +47,7 @@ async function editMenuItem(item) {
   const menuCollection = db.collection("menu");
   const result = await menuCollection.updateOne(
     { _id: item._id },
-    { $set: { text: item.text, response: item.response } }
+    { $set: { text: item.text, response: item.response, counter: item.counter } }
   );
   console.log(`Item updated with ID: ${item._id}`);
 }
