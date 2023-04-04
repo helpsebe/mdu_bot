@@ -1,6 +1,5 @@
-
-# 🤖  Moodlik Telegram Bot
 ![mdu](./banner.jpg)
+# 🤖  Moodlik Telegram Bot
 
 📱 This is a Telegram bot that helps users navigate through the MDU Learning Portal. It provides a menu of options to choose from, and responds with relevant information.
 
