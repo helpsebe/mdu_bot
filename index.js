@@ -10,10 +10,6 @@ require("dotenv").config();
 
 const token = process.env.TOKEN_BOT;
 const bot = new TelegramBot(token, { polling: true });
-// const bot = new TelegramBot(token, {
-//   webhook: { port: 3000 },
-// });
-// bot.setWebHook("https://vercel-repo-eosin.vercel.app/");
 
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, {
@@ -100,7 +96,7 @@ async function initDB() {
 async function handleStart(msg) {
   const chatId = msg.chat.id;
   const menu = await getMenu();
-
+  console.log("newUser:", msg.from.username, msg.text);
   const keyboard = {
     reply_markup: {
       keyboard: menu.map((item) => [{ text: item.text }]),
@@ -121,7 +117,7 @@ async function handleMessage(msg) {
   const selectedButton = msg.text;
   const user = await getUser(chatId);
 
-  console.log("CHECK HANDLING:", msg.text);
+  console.log("handlingMessage:", msg.from.username, msg.text);
 
   if (user) {
     await updateUser(chatId, user.counter + 1);
@@ -248,7 +244,7 @@ async function handleDeleteButton(msg, match) {
   }
 
   await deleteMenuItem(deleteableButton._id);
-  bot.sendMessage(chatId, `#104`);
+  bot.sendMessage(chatId, `✅ Кнопка "${nameButton}" видалена з меню!`);
   bot.sendMessage(chatId, `Для оновлення меню пропищіть /start`);
 }
 
@@ -308,16 +304,6 @@ async function getAdminInfo(msg, match) {
 async function main() {
   await initDB();
 
-  //   app.use(bodyParser.json());
-
-  //   app.post("/", (req, res) => {
-  //     const update = req.body;
-  //     bot.processUpdate(update);
-  //     res.sendStatus(200);
-  // });
-  // app.listen(3000, () => {
-  //     console.log("Server is listening on port 3000");
-  // });
   bot.onText(/\/start/, handleStart);
   bot.on("message", handleMessage);
   bot.onText(/\/add_button (.+)/, handleAddButton);
