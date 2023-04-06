@@ -1,4 +1,3 @@
-![mdu](./banner.jpg)
 # 🤖  Moodlik Telegram Bot
 
 📱 This is a Telegram bot that helps users navigate through the MDU Learning Portal. It provides a menu of options to choose from, and responds with relevant information.
@@ -28,3 +27,4 @@ This bot does not collect any personal information from users.
 
 📝 License:
 This project is licensed under the MIT License. Feel free to use and modify the code as you see fit.
+![mdu](./banner.jpg)
