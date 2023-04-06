@@ -27,4 +27,5 @@ This bot does not collect any personal information from users.
 
 📝 License:
 This project is licensed under the MIT License. Feel free to use and modify the code as you see fit.
+
 ![mdu](./banner.jpg)
